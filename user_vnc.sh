@@ -2,10 +2,10 @@
 
 # Range of users to configure (adjust as needed)
 START=0
-END=19
+END=20
 
 # VNC password
-VNC_PASS="workshop"
+VNC_PASS="AHEADworkshop"
 
 for i in $(seq -f "%02g" $START $END); do
     username="ahead_user$i"
