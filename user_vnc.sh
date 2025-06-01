@@ -2,7 +2,7 @@
 
 # Range of users to configure (adjust as needed)
 START=0
-END=14
+END=19
 
 # VNC password
 VNC_PASS="workshop"

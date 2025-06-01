@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUM_USERS=15
+NUM_USERS=20
 PASSWORD="AHEADworkshop"
 
 for i in $(seq -w 0 $((NUM_USERS - 1))); do
