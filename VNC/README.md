@@ -2,6 +2,8 @@
 
 Welcome to the AHEAD workshop! Follow this clear, step-by-step guide to access your assigned server using VNC.
 
+
+User accounts and passwords for every user can be found in this [Sheet](https://docs.google.com/spreadsheets/d/13zLc7p-xwgFj2rsLr5I2MfvB38KfYNqfzxKEAejx608/edit?gid=1597156241#gid=1597156241).
 ---
 
 ## 📌 Initial Login (SSH)
