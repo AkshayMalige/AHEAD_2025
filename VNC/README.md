@@ -140,7 +140,7 @@ exit
 
 ## 📩 Need Help?
 
-Contact the workshop organizer or IT support for assistance.
+Contact the workshop organizer for assistance.
 
 ---
 
