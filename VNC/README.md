@@ -13,7 +13,7 @@ ssh ahead_userXX@130.199.21.151
 ```
 
 - Replace `XX` with your assigned user number.
-- **Password:** `AHEADworkshop`
+- **Password:** `workshop`
 
 ---
 
