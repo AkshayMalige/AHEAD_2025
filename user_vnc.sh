@@ -1,50 +1,47 @@
 #!/bin/bash
 
-# Range of users to configure (adjust as needed)
 START=0
-END=20
-
-# VNC password
-VNC_PASS="AHEADworkshop"
+END=19
+PASSWORD="AHEADworkshop"
 
 for i in $(seq -f "%02g" $START $END); do
     username="ahead_user$i"
-    home_dir="/home/$username"
+    user_home="/home/$username"
+    vnc_dir="$user_home/.vnc"
+    xstartup="$vnc_dir/xstartup"
 
-    echo "Setting up VNC for: $username"
+    echo "Setting up VNC for $username"
 
-    # Skip if user doesn't exist
-    if ! id "$username" &>/dev/null; then
-        echo "User $username does not exist. Skipping..."
-        continue
-    fi
-
-    # Ensure .vnc directory exists
-    mkdir -p "$home_dir/.vnc"
-    chown -R $username:$username "$home_dir/.vnc"
+    # Create .vnc directory if not present
+    sudo -u $username mkdir -p $vnc_dir
 
     # Set VNC password
-    echo "$VNC_PASS" | vncpasswd -f > "$home_dir/.vnc/passwd"
-    chmod 600 "$home_dir/.vnc/passwd"
-    chown $username:$username "$home_dir/.vnc/passwd"
+    echo "$PASSWORD" | vncpasswd -f | sudo tee "$vnc_dir/passwd" > /dev/null
+    sudo chown $username:$username "$vnc_dir/passwd"
+    sudo chmod 600 "$vnc_dir/passwd"
 
-    # Ensure .Xauthority exists
-    touch "$home_dir/.Xauthority"
-    chown $username:$username "$home_dir/.Xauthority"
-    chmod 600 "$home_dir/.Xauthority"
-
-    # Create minimal xstartup file
-    cat << 'EOF' > "$home_dir/.vnc/xstartup"
+    # Create custom xstartup script
+    sudo tee "$xstartup" > /dev/null << EOF
 #!/bin/sh
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-[ -x /etc/X11/xinit/xinitrc ] && exec /etc/X11/xinit/xinitrc
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-xterm &
+
+export XDG_SESSION_TYPE=x11
+export XDG_CURRENT_DESKTOP=XFCE
+export XDG_RUNTIME_DIR=/tmp/runtime-\$USER
+
+# Optional: kill locker if it spawns
+(sleep 5 && pkill -9 light-locker) &
+
+# Start XFCE session
+startxfce4 &
 EOF
 
-    chmod +x "$home_dir/.vnc/xstartup"
-    chown $username:$username "$home_dir/.vnc/xstartup"
+    # Fix permissions
+    sudo chown $username:$username "$xstartup"
+    sudo chmod +x "$xstartup"
 
-    echo "✔ VNC configured for $username"
+    # Ensure .Xauthority exists to prevent auth issues
+    sudo -u $username touch "$user_home/.Xauthority"
+    sudo chown $username:$username "$user_home/.Xauthority"
 done
