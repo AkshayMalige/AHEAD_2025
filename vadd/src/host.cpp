@@ -1,84 +1,95 @@
+/**
+* Copyright (C) 2019-2021 Xilinx, Inc
+*
+* Licensed under the Apache License, Version 2.0 (the "License"). You may
+* not use this file except in compliance with the License. A copy of the
+* License is located at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+* License for the specific language governing permissions and limitations
+* under the License.
+*/
+
+#include "cmdlineparser.h"
 #include <iostream>
 #include <cstring>
-#include <filesystem>
-#include "xrt/xrt_bo.h"
-#include <experimental/xrt_xclbin.h>
-#include "xrt/xrt_device.h"
-#include "xrt/xrt_kernel.h"
+
+// XRT includes
+#include "experimental/xrt_bo.h"
+#include "experimental/xrt_device.h"
+#include "experimental/xrt_kernel.h"
 
 #define DATA_SIZE 4096
 
-// Automatically find the correct .xclbin based on host executable path
-std::string find_xclbin_from_exec(const std::string& exec_path) {
-    std::filesystem::path exe = std::filesystem::canonical(exec_path);
-    std::filesystem::path build_dir = exe.parent_path().filename();  // Emulation-SW, Emulation-HW, Hardware
-
-    // Go up from: <project>/vadd/<Emulation-SW>/host.exe
-    auto project_root = exe.parent_path().parent_path().parent_path();
-
-    // Construct xclbin path
-    std::filesystem::path xclbin_path =
-        project_root / "vadd_system_hw_link" / build_dir / "binary_container_1.xclbin";
-
-    if (!std::filesystem::exists(xclbin_path)) {
-        throw std::runtime_error("ERROR: xclbin not found at " + xclbin_path.string());
-    }
-
-    return xclbin_path.string();
-}
-
 int main(int argc, char** argv) {
-    std::cout << "argc = " << argc << std::endl;
-    for (int i = 0; i < argc; i++) {
-        std::cout << "argv[" << i << "] = " << argv[i] << std::endl;
+    // Command Line Parser
+    sda::utils::CmdLineParser parser;
+
+    // Switches
+    //**************//"<Full Arg>",  "<Short Arg>", "<Description>", "<Default>"
+    parser.addSwitch("--xclbin_file", "-x", "input binary file string", "");
+    parser.addSwitch("--device_id", "-d", "device index", "0");
+    parser.parse(argc, argv);
+
+    // Read settings
+    std::string binaryFile = parser.value("xclbin_file");
+    int device_index = stoi(parser.value("device_id"));
+
+    if (argc < 3) {
+        parser.printHelp();
+        return EXIT_FAILURE;
     }
 
-    // Get xclbin path based on current directory
-    std::string binaryFile = find_xclbin_from_exec(argv[0]);
-    std::cout << "Using xclbin: " << binaryFile << std::endl;
-
-    int device_index = 0;
-    std::cout << "Opening device " << device_index << std::endl;
+    std::cout << "Open the device" << device_index << std::endl;
     auto device = xrt::device(device_index);
-
-    std::cout << "Loading xclbin..." << std::endl;
+    std::cout << "Load the xclbin " << binaryFile << std::endl;
     auto uuid = device.load_xclbin(binaryFile);
-
-    auto krnl = xrt::kernel(device, uuid, "krnl_vadd", xrt::kernel::cu_access_mode::exclusive);
 
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
-    std::cout << "Allocating buffers..." << std::endl;
-    auto boIn1 = xrt::bo(device, vector_size_bytes, krnl.group_id(0));
-    auto boIn2 = xrt::bo(device, vector_size_bytes, krnl.group_id(1));
-    auto boOut = xrt::bo(device, vector_size_bytes, krnl.group_id(2));
+    auto krnl = xrt::kernel(device, uuid, "krnl_vadd");
 
-    auto bo0_map = boIn1.map<int*>();
-    auto bo1_map = boIn2.map<int*>();
-    auto bo2_map = boOut.map<int*>();
+    std::cout << "Allocate Buffer in Global Memory\n";
+    auto bo0 = xrt::bo(device, vector_size_bytes, krnl.group_id(0));
+    auto bo1 = xrt::bo(device, vector_size_bytes, krnl.group_id(1));
+    auto bo_out = xrt::bo(device, vector_size_bytes, krnl.group_id(2));
+
+    // Map the contents of the buffer object into host memory
+    auto bo0_map = bo0.map<int*>();
+    auto bo1_map = bo1.map<int*>();
+    auto bo_out_map = bo_out.map<int*>();
     std::fill(bo0_map, bo0_map + DATA_SIZE, 0);
     std::fill(bo1_map, bo1_map + DATA_SIZE, 0);
-    std::fill(bo2_map, bo2_map + DATA_SIZE, 0);
+    std::fill(bo_out_map, bo_out_map + DATA_SIZE, 0);
 
+    // Create the test data
     int bufReference[DATA_SIZE];
     for (int i = 0; i < DATA_SIZE; ++i) {
         bo0_map[i] = i;
         bo1_map[i] = i;
-        bufReference[i] = i + i;
+        bufReference[i] = bo0_map[i] + bo1_map[i];
     }
 
-    std::cout << "Synchronizing input buffers to device..." << std::endl;
-    boIn1.sync(XCL_BO_SYNC_BO_TO_DEVICE);
-    boIn2.sync(XCL_BO_SYNC_BO_TO_DEVICE);
+    // Synchronize buffer content with device side
+    std::cout << "synchronize input buffer data to device global memory\n";
 
-    std::cout << "Running kernel..." << std::endl;
-    auto run = krnl(boIn1, boIn2, boOut, DATA_SIZE);
+    bo0.sync(XCL_BO_SYNC_BO_TO_DEVICE);
+    bo1.sync(XCL_BO_SYNC_BO_TO_DEVICE);
+
+    std::cout << "Execution of the kernel\n";
+    auto run = krnl(bo0, bo1, bo_out, DATA_SIZE);
     run.wait();
 
-    std::cout << "Fetching results from device..." << std::endl;
-    boOut.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
+    // Get the output;
+    std::cout << "Get the output data from the device" << std::endl;
+    bo_out.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
 
-    if (std::memcmp(bo2_map, bufReference, vector_size_bytes))
+    // Validate our results
+    if (std::memcmp(bo_out_map, bufReference, DATA_SIZE))
         throw std::runtime_error("Value read back does not match reference");
 
     std::cout << "TEST PASSED\n";
