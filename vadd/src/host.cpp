@@ -23,18 +23,18 @@ int main(int argc, char** argv) {
 	}
 
     // Read settings
-    std::string binaryFile = "./vadd.xclbin";
+    auto binaryFile = argv[1];
     int device_index = 0;
 
     std::cout << "Open the device" << device_index << std::endl;
     auto device = xrt::device(device_index);
     std::cout << "Load the xclbin " << binaryFile << std::endl;
-    auto uuid = device.load_xclbin("./vadd.xclbin");
+    auto uuid = device.load_xclbin(binaryFile);
 
     size_t vector_size_bytes = sizeof(int) * DATA_SIZE;
 
     //auto krnl = xrt::kernel(device, uuid, "vadd");
-    auto krnl = xrt::kernel(device, uuid, "vadd", xrt::kernel::cu_access_mode::exclusive);
+    auto krnl = xrt::kernel(device, uuid, "krnl_vadd", xrt::kernel::cu_access_mode::exclusive);
 
     std::cout << "Allocate Buffer in Global Memory\n";
     auto boIn1 = xrt::bo(device, vector_size_bytes, krnl.group_id(0)); //Match kernel arguments to RTL kernel
