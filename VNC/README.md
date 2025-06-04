@@ -28,6 +28,7 @@ vncserver :XX
 ```
 
 - Replace `:XX` with your assigned user number.
+> **Note:** If your number start with '0', `ex : 05`, do `vncserver :5`.
 
 > **Note:** You only need to start this once unless you manually stop your session.
 
