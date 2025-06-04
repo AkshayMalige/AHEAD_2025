@@ -31,11 +31,11 @@ Input Vector 2 from Global Memory --->|             |      |__|
                                        ______________     |  | out_stream
                                       |              |<---|__|
                                       | store_result |
-                                      |______________|-----> Output result to Global Memory
+                                      |______________|-----> Output result to Global Memory /home/ahead_user00/AHEAD/AHEAD_2025/vadd/src/krnl_vadd.cpp
 
 *******************************************************************************/
-
-#include "krnl_vadd.h"
+// #include "krnl_vadd.h"
+#include "/home/ahead_user00/AHEAD/AHEAD_2025/vadd/src/krnl_vadd.h"
 
 // -----------------------------------------------------------------------------
 // Helper: load_input
