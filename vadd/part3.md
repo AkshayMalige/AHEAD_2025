@@ -30,8 +30,7 @@ The first step is to create a workspace for your project and to launch the Vitis
 
 
    The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design. 
- 
-![img](./images/part1_build_flow.png)
+
 
 ### Creating the HLS Component 
 
@@ -39,24 +38,9 @@ Use the **File > New Component > HLS** to create a new HLS component. This opens
 
 1. For the **Component name** field specify `krnl_vadd`
 2. For the **Component location** specify the workspace which is the default value
-3. Click Next to open the *Configuration File* page
-
-The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html).
- 
-![img](./images/part1_build_flow.png)
-
-### Creating the HLS Component 
-
-Use the **File > New Component > HLS** to create a new HLS component. This opens the Create HLS Component wizard to the *Name and Location* page. 
-
-1. For the **Component name** field specify `vadd`
-2. For the **Component location** specify the workspace which is the default value
-3. Click Next to open the *Configuration File* page
+3. Click Next to open the *Configuration File* page.
 
 The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html). You can specify a new empty file, an existing config file, or generate a config file from an existing HLS project as described in [*Creating an HLS Component*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=yzz1661583719823.html).
-
-
-![img](./images/part1_build_flow.png)
 
 4.  Select **Empty File** and click **Next**. 
 
