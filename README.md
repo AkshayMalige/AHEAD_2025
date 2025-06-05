@@ -58,7 +58,7 @@ To set up and explore the Vitis flow, start with:
 - [`vadd/README.md`](./vadd/README.md)
 
 To prepare user environments for training/workshops:
-- [`accounts/README.md`](./accounts/README.md)
+- [`VNC/README.md`](./VNC/README.md)
 
 ---
 
