@@ -1,7 +1,7 @@
 <table class="sphinxhide" width="100%">
   <tr>
     <td align="center">
-      <img src="../vadd/images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+      <img src="../vadd/images/copy.png" width="30%"/><h1>🚀 AHEAD Workshop VNC Access Guide</h1>
     </td>
   </tr>
   <tr>
@@ -9,9 +9,8 @@
   </tr>
 </table
 
-# 🚀 AHEAD Workshop VNC Access Guide
 
-Welcome to the AHEAD workshop! This single guide provides two ways to SSH and launch a VNC session on your assigned server—choose the option that applies to you:
+# Welcome to the AHEAD workshop! This single guide provides two ways to SSH and launch a VNC session on your assigned server—choose the option that applies to you:
 
 1. **Option A: Connect via CERN (haiderbnldesktop.cern.ch) using ProxyJump**  
 2. **Option B: Direct SSH to the server IP (130.199.21.151)**
