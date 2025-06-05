@@ -1,109 +1,65 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis™ Application Acceleration Development Flow Tutorials</h1>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
    </td>
  </tr>
  <tr>
  <td>
  </td>
  </tr>
-</table>
+</table
+# AHEAD Example Project: Vector Addition
 
-# Vitis Getting Started Tutorial
+Welcome to the AHEAD workshop! This section walks you through setting up and cloning the example project used in the hands-on sessions.
 
-## Part 2: Installation and Configuration
+---
 
-To develop and deploy applications with Vitis, you need to install the Vitis unified software environment, the Xilinx Runtime library (XRT) and the platform files specific to the acceleration card used in your project.
+## 🔧 Environment Setup
 
-### Step 1: Review the Installation Requirements
-
-Prior to starting the installation process, make sure to check the [Vitis installation requirements](https://docs.xilinx.com/r/en-US/ug1393-vitis-application-acceleration/Installation-Requirements).
-
->**NOTE:** Windows OS support is limited to the Vitis embedded software development flow. The Vitis application acceleration flow is only supported on Linux.
-
-### Step 2:  Download Vitis
-
-Download the latest version of the Vitis from the [AMD download website](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html). Make sure to download the Linux Self-Extracting web installer or the Single-File installer.
-
-### Step 3: Install Downloaded Packages
-
-After downloading the Vitis, XRT and platform packages, install them in the following order and according to the provided instructions:
-
-1. [Install the Vitis Software Platform](https://docs.xilinx.com/r/en-US/ug1393-vitis-application-acceleration/Installing-the-Vitis-Software-Platform)
-
-2. [Install the Xilinx Runtime and Platforms](https://docs.xilinx.com/r/en-US/ug1393-vitis-application-acceleration/Installing-Xilinx-Runtime-and-Platforms)
-
->**NOTE:** Installing XRT is not required when targeting Arm®-based embedded platforms. The Vitis compiler has its own copy of xclbinutil for hardware generation; and for software compilation, you can use the XRT from the sysroot on the Embedded Processor platform.
-
-### Step 4: Download and Install the Required Platform files
-
-#### Step 4A: Installing Data Center Platform Files
-
-AMD provides base platforms for the Alveo U200, U250, U50 and U280 data-center acceleration cards. Before installing a platform, you need to download the following packages:
-
-1. Xilinx Runtime (XRT)
-
-2. Deployment Target Platform
-
-3. Development Target Platform
-
-The packages required for each platform can be found on the corresponding download pages:
-
-* [U200](https://www.xilinx.com/products/boards-and-kits/alveo/u200.html#gettingStarted)
-
-* [U250](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html#gettingStarted)
-
-* [U50](https://www.xilinx.com/products/boards-and-kits/alveo/u50.html#gettingStarted)
-
-* [U280](https://www.xilinx.com/products/boards-and-kits/alveo/u280.html#gettingStarted)
-
-#### Step 4B: Installing Embedded Processor Platform Files
-
-AMD provides base platforms for the ZCU102 and ZCU104 cards. Before installing a platform, you need to download the following packages:
-
-1. Base platform
-2. Common image
-
-The packages required for each platform can be found on the corresponding download pages:
-
-* [ZCU102](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html)
-
-* [ZCU104](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html)
-
-### Step 5: Set Up the Environment to Run Vitis
-
-To configure the environment to run Vitis, run the following script, which sets up the environment to run in a specific command shell.
+### 1. Open a terminal in your desired workspace location:
+> (Right-click → **"Open Terminal Here"**)
 
 ```bash
-source <Vitis_install_path>/Vitis/2022.2/settings64.sh
+cd ~
 ```
 
->**NOTE:** `.csh` scripts are also provided but this tutorial assumes a bash shell is used.
+### 2. Source the Xilinx environment
 
-To configure XRT for Alveo Data Center accelerator cards, run the following script. This is not required for Embedded platforms.
+Depending on the machine you're using, run the appropriate commands below.
+
+#### 🔹 If you're on `130.199.21.151`:
 
 ```bash
+source /tools/Xilinx/Vitis/2024.2/settings64.sh
 source /opt/xilinx/xrt/setup.sh
 ```
 
-To specify the location of any Data Center or Embedded platforms you have installed, set the following environment variable:
+#### 🔹 If you're on `haiderbnldesktop`:
 
 ```bash
-export PLATFORM_REPO_PATHS=<path to platforms>
+source /media/slowSSD/Xilinx_2024.1/Vitis/2024.1/settings64.sh
+source /opt/xilinx/xrt/setup.sh
 ```
 
->**NOTE:** On some Ubuntu distributions, you must also export the `LIBRARY_PATH` to properly set up Vitis.
+---
+
+## 📂 Project Checkout
+
+### 3. Create a working directory for AHEAD projects:
 
 ```bash
-export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+mkdir -p ~/AHEAD
+cd ~/AHEAD
 ```
 
-For more information see [AR 73698](https://www.xilinx.com/support/answers/73698.html).
+### 4. Clone the example repository:
 
-## Next Step
+```bash
+git clone https://github.com/AkshayMalige/AHEAD_2025.git
+```
 
-  **Click here to [Review the Host and Kernel Code](./Part3.md)**
+You are now ready to begin working on the example vector addition project.
 
-<p class="sphinxhide" align="center"><sub>Copyright © 2020–2023 Advanced Micro Devices, Inc</sub></p>
+---
 
-<p class="sphinxhide" align="center"><sup><a href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></sup></p>
+🔁 *Next step: Open the project in Vitis Unified or Classic GUI and follow the component build instructions in Part 2.*
