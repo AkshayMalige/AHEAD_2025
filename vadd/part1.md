@@ -1,6 +1,6 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1> Vitis Flow 101 – Part 1: Essential Concepts</h1>
    </td>
  </tr>
  <tr>
@@ -9,7 +9,6 @@
  </tr>
 </table
 
-## Vitis Flow 101 – Part 1: Essential Concepts
 
 
 * The software program is written in C/C++ and runs on a conventional CPU. The software program uses user-space APIs implemented by the AMD Runtime library (XRT) to interact with the acceleration kernel in the FPGA device.
