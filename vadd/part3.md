@@ -1,16 +1,13 @@
 <table class="sphinxhide" width="100%">
   <tr>
     <td align="center">
-      <img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+      <img src="./images/copy.png" width="30%"/><h1>Review the Kernel Code and Host Application</h1>
     </td>
   </tr>
   <tr>
     <td></td>
   </tr>
 </table>
-
-
-## Part 3: Review the Kernel Code and Host Application
 
  The example used in this tutorial is a trivial vector-add application. The simplicity of this example allows focusing on the key concepts of FPGA acceleration without being distracted by complicated algorithmic consideration.
 
