@@ -1,15 +1,9 @@
 <table class="sphinxhide" width="100%">
- <tr>
-   <td align="center"><img src="vadd/images/copy.png" width="30%"/><h1>AHEAD_2025</h1>
+   <td align="center"><img src="vadd/images/copy.png" width="70%"/>
    </td>
- </tr>
- <tr>
- <td>
- </td>
- </tr>
+
 </table>
 
-# AHEAD_2025 Project
 
 Welcome to the AHEAD_2025 workspace! This repository organizes several components used for FPGA-based acceleration and remote user setup. Each directory focuses on a specific part of the workflow.
 
