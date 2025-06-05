@@ -31,16 +31,17 @@ The first step is to create a workspace for your project and to launch the Vitis
 
    The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design.
 
-   ![img](./images/u1.png)
+   ![vitis](./images/u1.png)
 
 
 ### Creating the HLS Component 
 
 Use the **File > New Component > HLS** to create a new HLS component. This opens the Create HLS Component wizard to the *Name and Location* page. 
 
-1. For the **Component name** field specify `krnl_vadd`
+1. For the **Component name** field specify `krnl_vadd` 
 2. For the **Component location** specify the workspace which is the default value
 3. Click Next to open the *Configuration File* page.
+   
 
 The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html). You can specify a new empty file, an existing config file, or generate a config file from an existing HLS project as described in [*Creating an HLS Component*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=yzz1661583719823.html).
 
@@ -51,17 +52,22 @@ This opens the *Source Files* page.
 5.  Select the **Add Files** icon to open a file browser, navigate to `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/krnl_vadd.cpp` and select **Open** to add the **kernel design** file. 
 
 6.  Under the Top Function browse and select the `krnl_vadd` function and click **OK**.
-7.  Select the **Add Files** icon to open a file browser, navigate to `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/krnl_vadd_test.cpp` and select **Open** to add the **Test Bench** file. 
-8. Click **Next** to open the the *Select Part* page.
-9. Set the radio button to Platform, select the `xilinx_u250_gen3x16_xdma_4_1_202210_1` platform and click **Next** to open the *Settings* page. 
+   ![vitis](./images/u4.png)
+8.  Select the **Add Files** icon to open a file browser, navigate to `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/krnl_vadd_test.cpp` and select **Open** to add the **Test Bench** file. 
+9. Click **Next** to open the the *Select Part* page.
+10. Select **Platform**, select the `xilinx_u250_gen3x16_xdma_4_1_202210_1` platform and click **Next** to open the *Settings* page.
 
-10.  On the *Settings* page specify `8ns` for the **clock**, and `12%` for the **clock_uncertainty** to override the default values.
-11.  For **flow_target** select the `Vitis Kernel Flow` 
-12. For **package.output.format** specify `Generate a Vitis XO` to create .xo output`. 
+    ![vitis](./images/u6.png)
+
+12.  On the *Settings* page specify `8ns` for the **clock**, and `12%` for the **clock_uncertainty** to override the default values.
+13.  For **flow_target** select the `Vitis Kernel Flow` 
+14. For **package.output.format** specify `Generate a Vitis XO` to create .xo output`. 
 
 The default clock uncertainty, when it is not specified, is 27% of the clock period. For more information, refer to [Specifying the Clock Frequency](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=ycw1585572210561.html)
 
 13. Click **Next** to open the *Summary* page. Review the *Summary* page and click **Finish** to create the defined HLS component.
+
+    ![vitis](./images/u7.png)
 
 In the Vitis Components Explorer you can see the `krnl_vadd` component created, with the `vitis-comp.json` file opened in the center editor. You can see the `hls-config.cfg` file which is where the build directives will be placed to control the simulation and synthesis process. 
 
