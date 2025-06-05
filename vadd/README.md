@@ -20,9 +20,11 @@ Welcome to the AHEAD FPGA workshop! This repository contains a complete step-by-
 
 This repository is split into multiple stages:
 
-- **[Part 1](./part1.md):** Environment setup and project checkout
-- **[Part 2](./part2.md):** Creating and running the HLS component
-- **[Part 3](./part3.md):** Building the host and system project
+- **[Part 1](./part1.md):** Vitis Flow 101 – Part 1: Essential Concepts 
+- **[Part 2](./part2.md):** Environment Setup
+- **[Part 3](./part3.md):** Review the Kernel Code and Host Application
+- **[Part 4](./part4.md):** Creating an example HLS component on Vitis Unified, Optimizations & Reviwing reports
+- **[Part 5](./part5.md):** Creating Application Component and System Project
 
 Each part builds on the previous and is designed to be clear and reproducible.
 
@@ -32,7 +34,7 @@ Each part builds on the previous and is designed to be clear and reproducible.
 
 Start by following [part1.md](./part1.md) to set up your environment and clone the repository.
 
-From there, proceed to part2.md and part3.md in order.
+From there, proceed to part2.md and part3.md and so on in order.
 
 ---
 
@@ -40,12 +42,18 @@ From there, proceed to part2.md and part3.md in order.
 
 ```
 AHEAD_2025/
-├── part1.md          # Setup and Git clone
-├── part2.md          # HLS component steps
-├── part3.md          # Host and system project
+├── part1.md          # Introduction to Vitis Flow
+├── part2.md          # Environment Setup
+├── part3.md          # Code review
+├── part4.md          # HLS component steps
+├── part5.md          # Host and system project
 ├── README.md         # This file
-└── krnl_vadd/        # Kernel source
-    └── ...
+└── src/        # Kernel source
+    └── krnl_vadd.cpp  #Kernel source file
+    └── krnl_vadd.h    #Kernel source file
+    └── vadd.cpp       #Host application source file
+    └── vadd.h         #Host application source file
+ 
 ```
 
 ---
