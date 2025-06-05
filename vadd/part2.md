@@ -71,4 +71,4 @@ You are now ready to begin working on the example vector addition project.
 
 ## Next Step
 
-  **Click here to [Review the Host and Kernel Code](./Part3.md)**
+  **Click here to [Review the Host and Kernel Code](./part3.md)**
