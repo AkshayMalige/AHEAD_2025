@@ -1,29 +1,6 @@
-<table class="sphinxhide" width="100%">
- <tr>
-   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis™ Application Acceleration Development Flow Tutorials</h1>
-   </td>
- </tr>
- <tr>
- <td>
- </td>
- </tr>
-</table>
+
 
 # Vitis Flow 101 – Part 1: Essential Concepts
-
-The Vitis unified software platform provides a framework for developing and delivering FPGA accelerated applications using standard programming languages. Vitis offers all of the features of a standard software development environment, including:
-
-* Compiler or cross-compiler for host applications running on x86 or Arm® processors
-
-* Cross-compilers for building the FPGA binary
-
-* Debugging environment to help identify and resolve issues in the code
-
-* Performance profilers to identify bottlenecks and help you optimize the application
-
-## Understanding the Vitis Programming and Execution Model
-
-A Vitis accelerated application consists of two distinct components: a software program and an FPGA binary containing hardware accelerated kernels.
 
 
 * The software program is written in C/C++ and runs on a conventional CPU. The software program uses user-space APIs implemented by the AMD Runtime library (XRT) to interact with the acceleration kernel in the FPGA device.
