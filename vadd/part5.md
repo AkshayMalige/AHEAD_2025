@@ -20,6 +20,8 @@ The Application component is an application that runs on the processor, Arm or x
 5. Review the *Summary* page and click **Finish**.
 6. Once imported, select `vadd.cpp` in the Component Explorer to view it in the Code Editor.
 7. Click **Build** to compile for X86 Simulation or Hardware.
+![vitis](./images/u13.png)
+
 
 ## Creating System Project
 
@@ -43,49 +45,31 @@ The System project is where different components are integrated into a complete 
 
 Once the System project is configured:
 
-### 1. Set Active Build Configuration
-
-Use the top-right dropdown or `vitis-sys.json` editor to select:
-- `sw_emu` for software emulation
-- `hw_emu` for hardware emulation
-
-### 2. Build the System
+### 1. Build the System
 
 In the Flow Navigator:
-- Click **Build > Build for Emulation** (target depends on selected configuration)
+- Click **Build All> Build for Emulations** (target depends on selected configuration, Software Emulation or Hardware Emulation)
+- In the **Build Components** pop-up window select both **host** and **krnl_vadd**.
 
 This runs the `v++ --link` step and builds the `.xclbin` for emulation.
 
+![vitis](./images/u14.png)
+
+### 2. Set Active Build Configuration
+
+Use the top-right dropdown or `vitis-sys.json` editor to select:
+- Open **launch.json** under **Vitis Explorer > System Project > Settings > launch.json**.
+- Click on `+` icon to add congiguration
+- Select **Software Emulation** and **Enable Kernel Debug**.
+  
+![vitis](./images/u15.png)
+
+Repeat this for Hardware Emulation after running the emulation.
+
 ### 3. Run the Emulation
 
-With `system_project` selected, go to **Run > Launch Emulation**.
+With `system_project` selected, go to **Run**.
 
-A terminal appears showing execution logs from your host and emulated kernel.
-
-### 4. Analyze Emulation Reports
-
-After emulation:
-
-#### Open the **Run Summary**:
-
-- Go to **Window > Show View > Run Summary**
-- Double-click the latest summary
-
-#### Key Reports:
-
-- **Timeline Trace**: Gantt-style view of memory/kernel activity
-- **Profile Summary**: Kernel execution times, throughput, stalls
-- **System Estimate**: Estimated LUTs, BRAM, URAM, FF usage
-
-### 5. Next Steps
-
-- If `sw_emu` passes: functional correctness is verified
-- If `hw_emu` passes: timing and performance behavior validated
-
-You can now:
-
-- Apply optimizations in HLS (e.g., `PIPELINE`, `DATAFLOW`, `PARTITION`)
-- Tune host-kernel interactions
-- Switch build to `hardware`, and run **Build > Build for Hardware**
+A terminal appears showing execution logs from your host and emulated kernel. Look for **Device[0]:program successful!** and **TEST PASSED** message in the console.
 
 This produces the final `.xclbin` for deployment to the Alveo card.
