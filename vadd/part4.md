@@ -29,7 +29,9 @@ The first step is to create a workspace for your project and to launch the Vitis
 2. `vitis -w work`
 
 
-   The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design. 
+   The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design.
+
+   ![img](./images/u1.png)
 
 
 ### Creating the HLS Component 
