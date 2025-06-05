@@ -54,11 +54,12 @@ Scripts to manage temporary user accounts and set up VNC sessions.
 
 ## 🧭 Getting Started
 
+To prepare user environments for training/workshops:
+- [`VNC/README.md`](./VNC/README.md)
+  
 To set up and explore the Vitis flow, start with:
 - [`vadd/README.md`](./vadd/README.md)
 
-To prepare user environments for training/workshops:
-- [`VNC/README.md`](./VNC/README.md)
 
 ---
 
