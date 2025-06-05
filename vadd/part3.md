@@ -1,13 +1,13 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis™ Application Acceleration Development Flow Tutorials</h1>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
    </td>
  </tr>
  <tr>
  <td>
  </td>
  </tr>
-</table>
+</table
 
 # 🚀 AHEAD Example Project
 
