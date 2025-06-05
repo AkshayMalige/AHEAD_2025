@@ -22,6 +22,12 @@ AHEAD_2025/
 
 ## 📜 Component Details
 
+
+### 🖥️ [`VNC/`](./VNC)
+Instructions and configuration notes for managing remote VNC environments on shared lab systems.
+
+---
+
 ### 🔧 [`vadd/`](./vadd)
 This folder contains the example project for hardware acceleration using Vitis Unified IDE 2024.2.  
 Includes a multi-part walkthrough:
@@ -43,10 +49,6 @@ Scripts to manage temporary user accounts and set up VNC sessions.
 - `user_vnc.sh`: VNC setup per user
 - `README.md`: Details for system admins -->
 
----
-
-### 🖥️ [`VNC/`](./VNC)
-Instructions and configuration notes for managing remote VNC environments on shared lab systems.
 
 ---
 
