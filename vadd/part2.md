@@ -34,7 +34,7 @@ source /path_to_Vitis_installation/Xilinx/Vitis/2024.2/settings64.sh
 source /opt/xilinx/xrt/setup.sh    //path to xrt installation
 ```
 
-#### 🔹 If you're on `130.199.21.151`:
+#### 🔹 If you're on `10.3.3.177`:
 
 ```bash
 source /tools/Xilinx/Vitis/2024.2/settings64.sh
