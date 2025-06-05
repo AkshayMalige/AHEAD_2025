@@ -16,14 +16,16 @@ Welcome to the AHEAD workshop! This section walks you through setting up and clo
 
 ## 🔧 Environment Setup
 
-### 1. Open a terminal in your desired workspace location:
+### 1. Connect to the server and lagin to a VNC session as desribed [here](https://github.com/AkshayMalige/AHEAD_2025/tree/main/VNC):
+
+### 2. Open a terminal in your desired workspace location:
 > (Right-click → **"Open Terminal Here"**)
 
 ```bash
 cd ~
 ```
 
-### 2. Source the Xilinx environment
+### 3. Source the Xilinx environment
 
 Depending on the machine you're using, run the appropriate commands below.
 
@@ -52,14 +54,14 @@ source /opt/xilinx/xrt/setup.sh
 
 ## 📂 Project Checkout
 
-### 3. Create a working directory for AHEAD projects:
+### 4. Create a working directory for AHEAD projects:
 
 ```bash
 mkdir -p ~/AHEAD
 cd ~/AHEAD
 ```
 
-### 4. Clone the example repository:
+### 5. Clone the example repository:
 
 ```bash
 git clone https://github.com/AkshayMalige/AHEAD_2025.git
