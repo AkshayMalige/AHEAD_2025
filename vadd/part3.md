@@ -25,26 +25,8 @@ This lab introduces the new **Vitis unified IDE** as described in [Introduction 
 
 The first step is to create a workspace for your project and to launch the Vitis unified IDE using the following steps:
 
-1. **Source environment files**  
-   - If on **130.199.21.151**  
-     ```bash
-     source /tools/Xilinx/Vitis/2024.2/setting64.sh
-     source /opt/xilinx/xrt/setup.sh
-     ```  
-   - If on **haiderbnldesktop**  
-     ```bash
-     source /media/slowSSD/Xilinx_2024.1/Vitis/2024.1/settings64.sh
-     source /opt/xilinx/xrt/setup.sh
-     ```
-   - Then run:
-     ```bash
-     cd $HOME
-     mkdir AHEAD
-     cd AHEAD
-     ```
-2. **Clone GitHub repository**  
-   ```bash
-   git clone https://github.com/AkshayMalige/AHEAD_2025.git
+1. `mkdir work`
+2. `vitis -w work`
 
 
    The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design. 
