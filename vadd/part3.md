@@ -13,28 +13,9 @@
 
 Welcome to the AHEAD workshop! Follow this clear, step-by-step guide for the example vector addition project.
 
-
-- Open terminal (Right click `Open Terminal Here`).
-- `cd`
-
-- If on 130.199.21.151
-  - Source /tools/Xilinx/Vitis/2024.2/setting64.sh
-  - Source /opt/xilinx/xrt/setup.sh
-- If on haiderbnldesktop
-  - Source /mdeia/slowSSD/Xilinx_2024.1/Vitis/2024.1/settings64.sh
-  - Source /opt/xilinx/xrt/setup.sh
-- mkdir AHEAD
-- cd AHEAD
-- git clone https://github.com/AkshayMalige/AHEAD_2025.git
-
-
-
-
-
-
 # Vitis Getting Started Tutorial
 
-## Part 1: Build and Run with the Vitis unified IDE
+## Build and Run with the Vitis unified IDE
 
 This lab introduces the new Vitis unified IDE as described in [Introduction to Vitis unified IDE](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1393-vitis-application-acceleration&resourceid=svk1630656618393.html). The unified IDE provides a single tool for end-to-end application development, without the need to jump between multiple tools for design, debug, integration and analysis. 
 
