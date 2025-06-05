@@ -1,4 +1,13 @@
-
+<table class="sphinxhide" width="100%">
+ <tr>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+   </td>
+ </tr>
+ <tr>
+ <td>
+ </td>
+ </tr>
+</table
 
 # Vitis Flow 101 – Part 1: Essential Concepts
 
