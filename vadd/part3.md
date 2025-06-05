@@ -1,128 +1,162 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+   <td align="center">
+     <img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
    </td>
  </tr>
  <tr>
- <td>
- </td>
+   <td>
+   </td>
  </tr>
 </table
 
-# 🚀 AHEAD Example Project
+# AHEAD Example Project – Part 3: Component Build Instructions
 
-Welcome to the AHEAD workshop! Follow this clear, step-by-step guide for the example vector addition project.
+This section shows you how to build the HLS kernel and host application components in Vitis™ (Classic or Unified). If you’ve completed [**Part 1**](./part1.md) (Essential Concepts) and [**Part 2**](./part2.md) (Project Setup & Vector Addition), you’re ready to compile the components for simulation or hardware.
 
-# Vitis Getting Started Tutorial
+---
 
-## Build and Run with the Vitis unified IDE
+## 1. Build the HLS Kernel (vadd)
 
-This lab introduces the new Vitis unified IDE as described in [Introduction to Vitis unified IDE](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1393-vitis-application-acceleration&resourceid=svk1630656618393.html). The unified IDE provides a single tool for end-to-end application development, without the need to jump between multiple tools for design, debug, integration and analysis. 
+1. **Open Vitis HLS 2024.2 (Classic GUI or Unified GUI)**  
+   - In **Classic**, select **File → New → Project**, or click the “new project” icon.  
+   - In **Unified**, click **+ Create Application Project**, then switch to HLS perspective.
 
-**NOTE:** The following text assumes you have setup the environment as instructed in [Part 2: Environment Setup](./part2.md).
+2. **Create a New HLS Project**  
+   - **Project name:** `vadd_kernel`  
+   - **Solution name:** `vadd_solution`  
+   - **RTL Language:** C++  
+   - **Device:** Choose **xilinx_u250_gen3x16_xdma_4_1** (from your `u250.cfg`)  
+   - **Part:** Should auto-detect `xcu250-figd2104-2L-e`.
 
-### Launch the Vitis unified IDE
+3. **Add Kernel Sources**  
+   - In the **Source** tab, click **Add Sources** → **Add New File**  
+     - File name: `krnl_vadd.cpp`  
+     - Paste the contents of your `krnl_vadd.cpp` (see `vadd_kernels/src/krnl_vadd.cpp`).  
+   - Click **Add Existing File** and navigate to `vadd_kernels/src/krnl_vadd.h`.  
+   - Make sure both files appear under **Solution “vadd_solution” → vadd_kernel**.
 
-The first step is to create a workspace for your project, and to launch the Vitis unified IDE using the following steps: 
+4. **Set Top Function**  
+   - In the **Hierarchy** pane, right-click on `krnl_vadd.cpp` → **Set as Top Function**  
+   - You should see `krnl_vadd` in green under **C Synthesis**.
 
-1. Source enviornment files
-   - If on 130.199.21.151
-     - `source /tools/Xilinx/Vitis/2024.2/setting64.sh`
-     - `source /opt/xilinx/xrt/setup.sh`
-  - If on haiderbnldesktop
-    - `source /mdeia/slowSSD/Xilinx_2024.1/Vitis/2024.1/settings64.sh`
-    - `source /opt/xilinx/xrt/setup.sh`
-  - `cd $HOME`
-  - `mkdir AHEAD`
-  - `cd AHEAD`
-2. Clone git hub repository
-  - `git clone https://github.com/AkshayMalige/AHEAD_2025.git`
-3. Create a workspace: `mkdir workVADD`
-2. Launch the Vitis unified IDE: `vitis -w workVADD`
+5. **Run C Synthesis**  
+   - Click the **C Synthesis** (play) button.  
+   - Wait for the **Synthesis Done** message in the log window.  
+   - Confirm there are no errors; warnings about latency or II are okay.
 
-The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design. 
- 
-![img](./images/part1_build_flow.png)
+6. **Run C/RTL Cosimulation** (optional)  
+   - Click **C/RTL Cosimulation**.  
+   - If your testbench is set in `vadd_kernels/tb/vadd_tb.cpp`, make sure it’s added.  
+   - Check the **Simulation Done** message.  
 
-### Creating the HLS Component 
+7. **Export Kernel as XO**  
+   - In the **C Synthesis** view, click **Export RTL** → **Format: XO** → **OK**.  
+   - Result: `vadd.xo` appears under `vadd_kernels/solution1/syn/vadd_kernel/` (or similar).
 
-Use the **File > New Component > HLS** to create a new HLS component. This opens the Create HLS Component wizard to the *Name and Location* page. 
+---
 
-1. For the **Component name** field specify `krnl_vadd`
-2. For the **Component location** specify the workspace which is the default value
-3. Click Next to open the *Configuration File* page
+## 2. Build the Host Application
 
-The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html).
- 
-![img](./images/part1_build_flow.png)
+1. **Open Vitis 2024.2 (Classic or Unified GUI)**  
+   - If already open, ensure you are in the **Application Project** perspective.
 
-### Creating the HLS Component 
+2. **Create a New Application Project**  
+   - **Project name:** `vadd_host`  
+   - **Platform:** Select **xilinx_u250_gen3x16_xdma_4_1** (should match the HLS project).  
+   - **OS:** Choose **Standalone**, or **Linux** if running on a Linux target.  
 
-Use the **File > New Component > HLS** to create a new HLS component. This opens the Create HLS Component wizard to the *Name and Location* page. 
+3. **Add Host Source Files**  
+   - Right-click `vadd_host` → **Add Sources** → **Add Existing File** → select `host.cpp` from `vadd_host/src/host.cpp`.  
+   - Confirm that `host.cpp` appears under **vadd_host/src**.
 
-1. For the **Component name** field specify `vadd`
-2. For the **Component location** specify the workspace which is the default value
-3. Click Next to open the *Configuration File* page
+4. **Add Include Path for Kernel Header**  
+   - Right-click on `vadd_host` → **C/C++ Build Settings**  
+   - Under **GCC Compiler → Includes**, click **Add**:  
+     ```
+     ../vadd_kernels/src
+     ```  
+   - This ensures `#include "krnl_vadd.h"` in `host.cpp` resolves correctly.
 
-The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html). You can specify a new empty file, an existing config file, or generate a config file from an existing HLS project as described in [*Creating an HLS Component*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=yzz1661583719823.html).
+5. **Link XO File**  
+   - Expand **vadd_host** → **System Configuration** → **Linker** → **Linker Flags**.  
+   - Ensure `-L${XO_PATH}` is specified if needed, or simply use the GUI:  
+     - Under **System Configuration → Linker**, click **Add** under **Load XO**.  
+     - Navigate to `vadd_kernels/solution1/syn/vadd_kernel/vadd.xo`.  
 
+6. **Specify the `.cfg` File for the U250 Platform**  
+   - Still under **vadd_host → System Configuration**:  
+     - Click **Platform** → **Edit** → **Advanced** → **Configuration File**.  
+     - Browse to `vadd_kernels/platform/u250.cfg` (the `u250.cfg` you created).  
+     - Click **OK**.
 
-![img](./images/part1_build_flow.png)
+7. **Build the Host Application**  
+   - Click **Build** (hammer icon) for `vadd_host`.  
+   - Monitor the **Console**: it should compile without errors and generate `vadd_host.elf` (for emulator) or `.xclbin` for hardware.
 
-4.  Select **Empty File** and click **Next**. 
+---
 
-This opens the *Source Files* page. 
+## 3. Create the Binary Container
 
-5.  Select the **Add Files** icon to open a file browser, navigate to `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/krnl_vadd.cpp` and select **Open** to add the **kernel design** file. 
+1. **System Link (Generate `.xclbin`)**  
+   - In **vadd_host**, right-click → **Build Configurations → Set Active → Emulation-HW** (or **Hardware**).  
+   - Click **Build** again.  
+   - The **Console** will show:
+     ```
+     v++ --link ... --config ../vadd_kernels/platform/u250.cfg \
+       --xo ../vadd_kernels/solution1/syn/vadd_kernel/vadd.xo \
+       --out_dir ./vadd_system_hw_link/Emulation-SW ...
+     ```
+   - Wait for **Link Complete**; you’ll find `binary_container_1.xclbin` under `vadd_system_hw_link/Emulation-SW/`.
 
-6.  Under the Top Function browse and select the `krnl_vadd` function and click **OK**.
-7.  Select the **Add Files** icon to open a file browser, navigate to `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/krnl_vadd_test.cpp` and select **Open** to add the **Test Bench** file. 
-8. Click **Next** to open the the *Select Part* page.
-9. Set the radio button to Platform, select the `xilinx_u250_gen3x16_xdma_4_1_202210_1` platform and click **Next** to open the *Settings* page. 
+2. **Verify the `.xclbin`**  
+   - Use:
+     ```bash
+     ls vadd_system_hw_link/Emulation-SW/binary_container_1.xclbin
+     ```
+   - If present, you’re ready to run either **X86 Emulation** or program the U250 card.
 
-10.  On the *Settings* page specify `8ns` for the **clock**, and `12%` for the **clock_uncertainty** to override the default values.
-11.  For **flow_target** select the `Vitis Kernel Flow` 
-12. For **package.output.format** specify `Generate a Vitis XO` to create .xo output`. 
+---
 
-The default clock uncertainty, when it is not specified, is 27% of the clock period. For more information, refer to [Specifying the Clock Frequency](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=ycw1585572210561.html)
+## 4. Run in Emulation (Optional)
 
-13. Click **Next** to open the *Summary* page. Review the *Summary* page and click **Finish** to create the defined HLS component.
+1. **X86 Emulation**  
+   - Switch **Run Configuration** to **Emulation-SW**.  
+   - Click **Run** (green ▶️).  
+   - The **Console** should show kernel load messages and final output (e.g., “Test PASSED”).
 
-In the Vitis Components Explorer you can see the `krnl_vadd` component created, with the `vitis-comp.json` file opened in the center editor. You can see the `hls-config.cfg` file which is where the build directives will be placed to control the simulation and synthesis process. 
+2. **Hardware Emulation** (If you have a U250 card connected)  
+   - Switch **Run Configuration** to **Emulation-HW**.  
+   - Click **Run**.  
+   - You should see board detection, kernel programming, and data transfer logs.
 
-The Flow Navigator displays the `krnl_vadd` component as the active component, and shows the flow for designing the HLS component including C Simulation, C Synthesis, C/RTL Co-simuation, and Implementation.
+---
 
-One advantage of the unified Vitis IDE is the ability to work from the bottom-up, building your HLS or AIE components and then integrating them into a higher-level system project. 
-The HLS component is created and opened as shown in the figure below.
+## 5. (Optional) Command-Line Build
 
-![img](./images/part1_build_flow.png)
+If you prefer **CLI**:
 
+```bash
+# From project root:
+# 1. Build the HLS kernel:
+v++ -c -t hw --platform xilinx_u250_gen3x16_xdma_4_1 \
+    -k krnl_vadd \
+    -I vadd_kernels/src \
+    -o vadd_kernel.xo \
+    vadd_kernels/src/krnl_vadd.cpp
 
+# 2. Build the host executable:
+g++ host/src/host.cpp -o host.exe \
+    -I vadd_kernels/src \
+    -lOpenCL -lpthread
 
-### Creating the Application Component
+# 3. Link into xclbin:
+v++ -l -t hw --platform xilinx_u250_gen3x16_xdma_4_1 \
+    --config vadd_kernels/platform/u250.cfg \
+    --xo vadd_kernel.xo \
+    -o vadd_system_hw_link/binary_container_1.xclbin
 
-The Application component is an application that runs on the processor, Arm or x86, that loads and runs the device binary (`.xclbin`) which you will build later. The Vitis unified IDE automatically detects whether the Application component uses XRT native API or OpenCL and compiles the code as needed. Create the Application component using the following steps: 
-
-1.  From the main menu select **File > New Component > Application**
-
-This opens the Create Application Component wizard on the *Name and Location* page. 
-
-2.  Enter the **Component name** as `host`, enter the **Component location** as the workspace (default), and click **Next**. 
-
-This opens the *Select Platform* page. 
-
-3.  On the *Select Platform* page select the `xilinx_u250_gen3x16_xdma_4_1_202210_1` platform and click **Next** to open the *Select Domain* page. 
-
-On the *Select Domain* page you will select from the available processor domains and OS. In this case there is only one choice. 
-
-4.  Review the *Summary* page and click **Finish** to create the defined Application component. 
- 
-The Application component `vitis-comp.json` file is opened in the center editor, and the component is added to the Component Explorer. When creating the Application component you do not specify source files so you must add the required source files after the component is created. 
-
-In the Vitis Components Explorer view expand the `host` component, right-click the `Sources` folder and **Import > Files** to import the following source file: `<downloaded_git_repo_path>/AHEAD/AHEAD_2025/vadd/src/vadd.cpp`
-
-After adding it, you can select the `vadd.cpp` and  `vadd.h` file in the Vitis Components Explorer to open it in the Code Editor in the central editor window. This example shows the simplest way of using XRT API to interact with the hardware accelerator.
- 
-Having added the source code to the component, you are now ready to compile the code. Looking at the Flow Navigator with the Application component the active component, you can see there are Build commands under X86 Simulation and Hardware. For Data Center applications, these two are essentially the same as the Application component runs on the X86 processor for both Hardware and Emulation. However, for Embedded Processor-based platforms, these are two different build configurations. For software emulation, even though the platform uses an embedded processor, emulation is run on the x86 processor as described in [*Embedded Processor Emulation Using PS on x86*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1393-vitis-application-acceleration&resourceid=vfp1662765605490.html). For hardware emulation, or to run on hardware, the Application component must be compiled for the embedded processor domain. These Build choices reflect that requirement. 
-
-6. After the `host.cpp` is imported, click the **Build** command to build the application for X86 Simulation or for Hardware.
+# 4. Run (must have $XCL_EMULATION_MODE set appropriately):
+# For X86 emulation:
+export XCL_EMULATION_MODE=sw_emu
+./host.exe ./vadd_system_hw_link/binary_container_1.xclbin
