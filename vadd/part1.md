@@ -9,7 +9,7 @@
  </tr>
 </table
 
-# Vitis Flow 101 – Part 1: Essential Concepts
+## Vitis Flow 101 – Part 1: Essential Concepts
 
 
 * The software program is written in C/C++ and runs on a conventional CPU. The software program uses user-space APIs implemented by the AMD Runtime library (XRT) to interact with the acceleration kernel in the FPGA device.
