@@ -173,7 +173,7 @@ The default view shows all of the operations. However, a drop-down menu at the t
 
 ### Next Step
 
-Next, learn about using optimization techniques [here](https://docs.amd.com/r/en-US/Vitis-Tutorials-Getting-Started/Using-Optimization-Techniques) to study changes in the performance of your design. 
+Next, learn about using optimization techniques [here](https://docs.amd.com/r/en-US/Vitis-Tutorials-Getting-Started/Using-Optimization-Techniques). Escpesially derivatives like PIPELINE, DATAFLOW, ARRAY_PARTITION and try to use them in your design to study changes in the performance. 
 
 **Click here to [Create Application and System Project](./part5.md)**
 
