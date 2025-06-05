@@ -1,3 +1,15 @@
+<table class="sphinxhide" width="100%">
+ <tr>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+   </td>
+ </tr>
+ <tr>
+ <td>
+ </td>
+ </tr>
+</table
+# AHEAD Example Project: Vector Addition
+
 # AHEAD Workshop Project
 
 Welcome to the AHEAD FPGA workshop! This repository contains a complete step-by-step guided project for learning Vitis HLS, kernel integration, host code development, and system project building.
