@@ -27,6 +27,13 @@ cd ~
 
 Depending on the machine you're using, run the appropriate commands below.
 
+#### 🔹 If you're on your local machine:
+
+```bash
+source /path_to_Vitis_installation/Xilinx/Vitis/2024.2/settings64.sh
+source /opt/xilinx/xrt/setup.sh    //path to xrt installation
+```
+
 #### 🔹 If you're on `130.199.21.151`:
 
 ```bash
