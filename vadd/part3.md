@@ -19,7 +19,7 @@ Welcome to the AHEAD workshop! Follow this clear, step-by-step guide for the exa
 
 This lab introduces the new Vitis unified IDE as described in [Introduction to Vitis unified IDE](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1393-vitis-application-acceleration&resourceid=svk1630656618393.html). The unified IDE provides a single tool for end-to-end application development, without the need to jump between multiple tools for design, debug, integration and analysis. 
 
-**NOTE:** The following text assumes you have setup the environment as instructed in [Part 2: Installation and Configuration](./Part2.md).
+**NOTE:** The following text assumes you have setup the environment as instructed in [Part 2: Environment Setup](./part2.md).
 
 ### Launch the Vitis unified IDE
 
