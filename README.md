@@ -1,6 +1,6 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="./vadd/images/copy.png" width="30%"/><h1>AHEAD_2025</h1>
+   <td align="center"><img src="vadd/images/copy.png" width="30%"/><h1>AHEAD_2025</h1>
    </td>
  </tr>
  <tr>
@@ -15,26 +15,26 @@ Welcome to the AHEAD_2025 workspace! This repository organizes several component
 ---
 
 ## 📂 Project Structure Overview
-
+```
 AHEAD_2025/
-├── accounts/      # Scripts for creating/deleting user accounts and VNC setup
-├── vadd/          # Vector addition kernel project with documentation and source
-├── VNC/           # Notes/documentation specific to VNC environments
-├── README.md      # This file
-
+├── accounts      # Scripts for creating/deleting user accounts and VNC setup
+├── vadd          # Vector addition kernel project with documentation and source
+├── VNC           # Notes/documentation specific to VNC environments
+├── README.md     # This file
+```
 
 ---
 
 ## 📜 Component Details
 
 ### 🔧 [`vadd/`](./vadd)
-This folder contains the main example project for hardware acceleration using Vitis Unified IDE 2024.2.  
+This folder contains the example project for hardware acceleration using Vitis Unified IDE 2024.2.  
 Includes a multi-part walkthrough:
-- [`part1.md`](./vadd/part1.md): HLS Component Creation  
-- [`part2.md`](./vadd/part2.md): Application Setup  
-- [`part3.md`](./vadd/part3.md): System Project Creation  
-- [`part4.md`](./vadd/part4.md): Emulation and Analysis  
-- [`part5.md`](./vadd/part5.md): Final Build and Deployment  
+- [`part1.md`](./vadd/part1.md): Introduction to Vitis Flow
+- [`part2.md`](./vadd/part2.md): Environment Setup  
+- [`part3.md`](./vadd/part3.md): Code review
+- [`part4.md`](./vadd/part4.md): HLS component steps  
+- [`part5.md`](./vadd/part5.md): Host and system project
 
 📁 See [vadd/src](./vadd/src) for the actual HLS and host source files.
 
@@ -43,10 +43,10 @@ Includes a multi-part walkthrough:
 ### 👤 [`accounts/`](./accounts)
 Scripts to manage temporary user accounts and set up VNC sessions.
 
-Includes:
+<!-- Includes:
 - `user_create.sh` / `user_delete.sh`: User management
 - `user_vnc.sh`: VNC setup per user
-- `README.md`: Details for system admins
+- `README.md`: Details for system admins -->
 
 ---
 
