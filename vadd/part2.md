@@ -69,4 +69,6 @@ You are now ready to begin working on the example vector addition project.
 
 ---
 
-🔁 *Next step: Open the project in Vitis Unified or Classic GUI and follow the component build instructions in [**Part 3**](./part3.md).*
+## Next Step
+
+  **Click here to [Review the Host and Kernel Code](./Part3.md)**
