@@ -13,7 +13,7 @@
 # Welcome to the AHEAD workshop! This single guide provides two ways to SSH and launch a VNC session on your assigned server—choose the option that applies to you:
 
 1. **Option A: Connect via CERN (haiderbnldesktop.cern.ch) using ProxyJump**  
-2. **Option B: Direct SSH to the server IP (130.199.21.151)**
+2. **Option B: Direct SSH to the server IP (10.3.3.177)**
 
 Both methods assume you have a VNC password of `AHEADworkshop` and that your user account is named `ahead_userXX` (replace `XX` with your user number, e.g., `01`, `02`, etc. you can find your user number [here](https://docs.google.com/spreadsheets/d/13zLc7p-xwgFj2rsLr5I2MfvB38KfYNqfzxKEAejx608/edit?gid=1597156241#gid=1597156241)).  
 
