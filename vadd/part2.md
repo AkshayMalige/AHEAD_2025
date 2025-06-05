@@ -1,6 +1,6 @@
 <table class="sphinxhide" width="100%">
  <tr>
-   <td align="center"><img src="./images/copy.png" width="30%"/><h1>Vitis™ Example Tutorials</h1>
+   <td align="center"><img src="./images/copy.png" width="30%"/><h1>🔧 Environment Setup</h1>
    </td>
  </tr>
  <tr>
@@ -13,8 +13,6 @@
 Welcome to the AHEAD workshop! This section walks you through setting up and cloning the example project used in the hands-on sessions.
 
 ---
-
-## 🔧 Environment Setup
 
 ### 1. Connect to the server and lagin to a VNC session as desribed [here](https://github.com/AkshayMalige/AHEAD_2025/tree/main/VNC):
 
