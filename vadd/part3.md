@@ -41,8 +41,8 @@ The first step is to create a workspace for your project, and to launch the Viti
 2. Launch the Vitis unified IDE: `vitis -w workVADD`
 
 The Vitis Unified IDE opens the specified workspace displaying the Welcome page. The workspace is a folder for holding the various components and projects of a design. 
-
- ![HLS Component](./images/unified-ide-create-hls1.png)
+ 
+![img](./images/part1_build_flow.png)
 
 ### Creating the HLS Component 
 
@@ -53,8 +53,8 @@ Use the **File > New Component > HLS** to create a new HLS component. This opens
 3. Click Next to open the *Configuration File* page
 
 The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html).
-
- ![HLS Component](./images/unified-hls-component2.png)
+ 
+![img](./images/part1_build_flow.png)
 
 ### Creating the HLS Component 
 
@@ -66,7 +66,8 @@ Use the **File > New Component > HLS** to create a new HLS component. This opens
 
 The *Configuration File* lets you specify commands for building and running the HLS component as described in [*HLS Config File Commands*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=azw1690243984459.html). You can specify a new empty file, an existing config file, or generate a config file from an existing HLS project as described in [*Creating an HLS Component*](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=yzz1661583719823.html).
 
- ![HLS Component](./images/unified-hls-component2.png)
+
+![img](./images/part1_build_flow.png)
 
 4.  Select **Empty File** and click **Next**. 
 
@@ -93,7 +94,8 @@ The Flow Navigator displays the `krnl_vadd` component as the active component, a
 
 One advantage of the unified Vitis IDE is the ability to work from the bottom-up, building your HLS or AIE components and then integrating them into a higher-level system project. 
 The HLS component is created and opened as shown in the figure below.
- ![HLS Component](./images/u7.png)
+
+![img](./images/part1_build_flow.png)
 
 
 
