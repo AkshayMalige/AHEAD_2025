@@ -20,7 +20,7 @@ The Application component is an application that runs on the processor, Arm or x
 5. Review the *Summary* page and click **Finish**.
 6. Once imported, select `vadd.cpp` in the Component Explorer to view it in the Code Editor.
 7. Click **Build** to compile for X86 Simulation or Hardware.
-![vitis](./images/u13.png)
+![vitis](./images/u16.png)
 
 
 ## Creating System Project
