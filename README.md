@@ -34,8 +34,8 @@ Includes a multi-part walkthrough:
 - [`part1.md`](./vadd/part1.md): Introduction to Vitis Flow
 - [`part2.md`](./vadd/part2.md): Environment Setup  
 - [`part3.md`](./vadd/part3.md): Code review
-- [`part4.md`](./vadd/part4.md): HLS component steps  
-- [`part5.md`](./vadd/part5.md): Host and system project
+- [`part4.md`](./vadd/part4.md): Creating HLS component  
+- [`part5.md`](./vadd/part5.md): Creating Host and system project
 
 📁 See [vadd/src](./vadd/src) for the actual HLS and host source files.
 
