@@ -59,7 +59,7 @@ This opens the *Source Files* page.
 
     ![vitis](./images/u6.png)
 
-12.  On the *Settings* page specify `8ns` for the **clock**, and `12%` for the **clock_uncertainty** to override the default values.
+12.  On the *Settings* page specify `8ns` for the **clock**, and `12%` for the **clock_uncertainty** to override the default values (for more on specifying the clock frequency refer to [here](https://docs.amd.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1399-vitis-hls&resourceid=ycw1585572210561.html)). 
 13.  For **flow_target** select the `Vitis Kernel Flow` 
 14. For **package.output.format** specify `Generate a Vitis XO` to create .xo output`. 
 
