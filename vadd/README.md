@@ -20,7 +20,7 @@ Welcome to the AHEAD FPGA workshop! This repository contains a complete step-by-
 
 This repository is split into multiple stages:
 
-- **[Part 1](./part1.md):** Vitis Flow 101 – Part 1: Essential Concepts 
+- **[Part 1](./part1.md):** Vitis Flow 101 – Essential Concepts 
 - **[Part 2](./part2.md):** Environment Setup
 - **[Part 3](./part3.md):** Review the Kernel Code and Host Application
 - **[Part 4](./part4.md):** Creating an example HLS component on Vitis Unified, Optimizations & Reviwing reports
