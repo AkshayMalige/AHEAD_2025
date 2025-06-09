@@ -14,9 +14,9 @@ Welcome to the AHEAD workshop! This section walks you through setting up and clo
 
 ---
 
-### 1. Connect to the server and lagin to a VNC session as desribed [here](https://github.com/AkshayMalige/AHEAD_2025/tree/main/VNC):
+### 1. Connect to the server and login to your VNC session as desribed [here](https://github.com/AkshayMalige/AHEAD_2025/tree/main/VNC):
 
-### 2. Open a terminal in your desired workspace location:
+### 2. Open a terminal in your vnc workspace :
 > (Right-click → **"Open Terminal Here"**)
 
 ```bash
