@@ -48,7 +48,7 @@ Use this if you are on a network that can directly reach `10.3.3.177` (no CERN b
    - Open your VNC client.  
    - Connect to:
      ```
-     localhost:59XX
+     vnc://localhost:59XX
      ```
    - Enter the **VNC password**:
      ```
