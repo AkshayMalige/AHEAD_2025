@@ -12,14 +12,62 @@
 
 # Welcome to the AHEAD workshop! This single guide provides two ways to SSH and launch a VNC session on your assigned server—choose the option that applies to you:
 
-1. **Option A: Connect via CERN (haiderbnldesktop.cern.ch) using ProxyJump**  
-2. **Option B: Direct SSH to the server IP (10.3.3.177)**
+1. **Option A: Direct SSH to the server IP (10.3.3.177)**  
+2. **Option B: Connect via CERN (haiderbnldesktop.cern.ch) using ProxyJump** 
 
 Both methods assume you have a VNC password of `AHEADworkshop` and that your user account is named `ahead_userXX` (replace `XX` with your user number, e.g., `01`, `02`, etc. you can find your user number [here](https://docs.google.com/spreadsheets/d/13zLc7p-xwgFj2rsLr5I2MfvB38KfYNqfzxKEAejx608/edit?gid=1597156241#gid=1597156241)).  
 
 ---
 
-## 📌 Option A: Connect via CERN (haiderbnldesktop.cern.ch)
+## 📌 Option A: Direct SSH to 10.3.3.177
+
+Use this if you are on a network that can directly reach `10.3.3.177` (no CERN bastion needed).
+
+1. **Initial SSH**  
+   ```bash
+   ssh ahead_userXX@10.3.3.177
+   ```
+   - Replace `XX` with your two-digit user number.  
+   - **Password:** `AHEADworkshop`
+
+2. **Start VNC Server (on the remote machine)**  
+   Once logged in, run:
+   ```bash
+   vncserver :XX
+   ```
+   - Launches a VNC session on display `:XX` (port `5900 + XX`).
+
+3. **Open a Local SSH Tunnel**  
+   In a second local terminal, run:
+   ```bash
+   ssh -L 59XX:localhost:59XX ahead_userXX@10.3.3.177 -N -f
+   ```
+   - This forwards your local port `59XX` → remote port `59XX`.
+
+4. **Connect with Your VNC Viewer**  
+   - Open your VNC client.  
+   - Connect to:
+     ```
+     localhost:59XX
+     ```
+   - Enter the **VNC password**:
+     ```
+     AHEADworkshop
+     ```
+
+5. **Stop the VNC Session (After the workshop)**  
+   - SSH into `10.3.3.177` and run:
+     ```bash
+     vncserver -kill :XX
+     ```
+   - Close the SSH tunnel:
+     ```bash
+     pkill -f "59XX:localhost:59XX"
+     ```
+
+---
+
+## 📌 Option B: Connect via CERN (haiderbnldesktop.cern.ch)
 
 Use this if you are on the CERN network or have SSH access through the CERN bastion (`lxtunnel.cern.ch`).
 
@@ -68,56 +116,6 @@ Use this if you are on the CERN network or have SSH access through the CERN bast
      ```bash
      pkill -f "59XX:localhost:59XX"
      ```
-
----
-
-## 📌 Option B: Direct SSH to 130.199.21.151
-
-Use this if you are on a network that can directly reach `130.199.21.151` (no CERN bastion needed).
-
-1. **Initial SSH**  
-   ```bash
-   ssh ahead_userXX@130.199.21.151
-   ```
-   - Replace `XX` with your two-digit user number.  
-   - **Password:** `AHEADworkshop`
-
-2. **Start VNC Server (on the remote machine)**  
-   Once logged in, run:
-   ```bash
-   vncserver :XX
-   ```
-   - Launches a VNC session on display `:XX` (port `5900 + XX`).
-
-3. **Open a Local SSH Tunnel**  
-   In a second local terminal, run:
-   ```bash
-   ssh -L 59XX:localhost:59XX ahead_userXX@130.199.21.151 -N -f
-   ```
-   - This forwards your local port `59XX` → remote port `59XX`.
-
-4. **Connect with Your VNC Viewer**  
-   - Open your VNC client.  
-   - Connect to:
-     ```
-     localhost:59XX
-     ```
-   - Enter the **VNC password**:
-     ```
-     AHEADworkshop
-     ```
-
-5. **Stop the VNC Session (After the workshop)**  
-   - SSH into `130.199.21.151` and run:
-     ```bash
-     vncserver -kill :XX
-     ```
-   - Close the SSH tunnel:
-     ```bash
-     pkill -f "59XX:localhost:59XX"
-     ```
-
----
 
 ## 📩 Need Help?
 
